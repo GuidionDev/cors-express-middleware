@@ -1,5 +1,5 @@
 {
-  "name": "cors-express-middleware",
+  "name": "@gdn/cors-express-middleware",
   "version": "0.0.0-semantically-released",
   "description": "",
   "main": "dist/index",
@@ -8,7 +8,7 @@
     "test": "gulp test",
     "semantic-release": "semantic-release"
   },
-  "author": "",
+  "author": "Guidion",
   "license": "MIT",
   "dependencies": {},
   "devDependencies": {
