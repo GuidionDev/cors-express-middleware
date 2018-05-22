@@ -1,3 +1,3 @@
-import Default from './default';
+import {corsMiddleware} from './middleware';
 
-export {Default};
+export default corsMiddleware;
