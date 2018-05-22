@@ -16,14 +16,7 @@ describe('corsMiddleware', () => {
       const request = new RequestMock('test.nl');
       const response = new ResponseMock();
       returnedFunction(request, response, () => {});
-      expect(response.headers['Access-Control-Allow-Origin'])
-        .to.equal('test.nl');
-      expect(response.headers['Access-Control-Allow-Methods'])
-        .to.equal('GET, POST, PUT, PATCH, DELETE');
-      expect(response.headers['Access-Control-Allow-Headers'])
-        .to.equal('Origin, X-Requested-With, Content-Type, Accept, Authorization');
-      expect(response.headers['Content-Type'])
-        .to.equal('application/json');
+      assertWithCorsHeaders(response, 'test.nl');
     });
 
     it ('Adds the correct settings when using an array with matching origin', () => {
@@ -31,14 +24,7 @@ describe('corsMiddleware', () => {
       const request = new RequestMock('test.nl');
       const response = new ResponseMock();
       returnedFunction(request, response, () => {});
-      expect(response.headers['Access-Control-Allow-Origin'])
-        .to.equal('test.nl');
-      expect(response.headers['Access-Control-Allow-Methods'])
-        .to.equal('GET, POST, PUT, PATCH, DELETE');
-      expect(response.headers['Access-Control-Allow-Headers'])
-        .to.equal('Origin, X-Requested-With, Content-Type, Accept, Authorization');
-      expect(response.headers['Content-Type'])
-        .to.equal('application/json');
+      assertWithCorsHeaders(response, 'test.nl');
     });
 
     it ('Adds the correct settings when using an array without matching origin', () => {
@@ -46,14 +32,7 @@ describe('corsMiddleware', () => {
       const request = new RequestMock('nothere.nl');
       const response = new ResponseMock();
       returnedFunction(request, response, () => {});
-      expect(response.headers['Access-Control-Allow-Origin'])
-        .to.equal(undefined);
-      expect(response.headers['Access-Control-Allow-Methods'])
-        .to.equal(undefined);
-      expect(response.headers['Access-Control-Allow-Headers'])
-        .to.equal(undefined);
-      expect(response.headers['Content-Type'])
-        .to.equal('application/json');
+      assertWithoutCorsHeaders(response);
     });
 
     it ('Adds the correct settings when using a string without matching origin', () => {
@@ -61,14 +40,7 @@ describe('corsMiddleware', () => {
       const request = new RequestMock('nothere.nl');
       const response = new ResponseMock();
       returnedFunction(request, response, () => {});
-      expect(response.headers['Access-Control-Allow-Origin'])
-        .to.equal(undefined);
-      expect(response.headers['Access-Control-Allow-Methods'])
-        .to.equal(undefined);
-      expect(response.headers['Access-Control-Allow-Headers'])
-        .to.equal(undefined);
-      expect(response.headers['Content-Type'])
-        .to.equal('application/json');
+      assertWithoutCorsHeaders(response);
     });
 
     it ('Adds the correct settings when not retrieving request origin', () => {
@@ -76,14 +48,29 @@ describe('corsMiddleware', () => {
       const request = new RequestMock(null);
       const response = new ResponseMock();
       returnedFunction(request, response, () => {});
-      expect(response.headers['Access-Control-Allow-Origin'])
-        .to.equal(undefined);
-      expect(response.headers['Access-Control-Allow-Methods'])
-        .to.equal(undefined);
-      expect(response.headers['Access-Control-Allow-Headers'])
-        .to.equal(undefined);
-      expect(response.headers['Content-Type'])
-        .to.equal('application/json');
+      assertWithoutCorsHeaders(response);
     });
   });
 });
+
+function assertWithoutCorsHeaders(response: ResponseMock) {
+  expect(response.headers['Access-Control-Allow-Origin'])
+    .to.equal(undefined);
+  expect(response.headers['Access-Control-Allow-Methods'])
+    .to.equal(undefined);
+  expect(response.headers['Access-Control-Allow-Headers'])
+    .to.equal(undefined);
+  expect(response.headers['Content-Type'])
+    .to.equal('application/json');
+}
+
+function assertWithCorsHeaders(response: ResponseMock, origin: string) {
+  expect(response.headers['Access-Control-Allow-Origin'])
+    .to.equal(origin);
+  expect(response.headers['Access-Control-Allow-Methods'])
+    .to.equal('GET, POST, PUT, PATCH, DELETE');
+  expect(response.headers['Access-Control-Allow-Headers'])
+    .to.equal('Origin, X-Requested-With, Content-Type, Accept, Authorization');
+  expect(response.headers['Content-Type'])
+    .to.equal('application/json');
+}
