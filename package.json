@@ -9,17 +9,8 @@
     "test": "gulp test",
     "semantic-release": "semantic-release"
   },
-  "release": {
-    "publish": [
-      {
-        "path": "@semantic-release/npm",
-        "pkgRoot": "dist",
-        "access": "public"
-      },
-      {
-        "path": "@semantic-release/github"
-      }
-    ]
+  "publishConfig": {
+    "access": "public"
   },
   "author": "Guidion",
   "license": "MIT",
