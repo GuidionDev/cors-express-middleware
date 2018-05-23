@@ -17,7 +17,8 @@
         "access": "public"
       },
       {
-        "path": "@semantic-release/github"
+        "path": "@semantic-release/github",
+        "assets": ["package.json"]
       }
     ]
   },
