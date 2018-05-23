@@ -10,7 +10,6 @@
     "semantic-release": "semantic-release"
   },
   "release": {
-    "verifyConditions": ["@semantic-release/npm", "@semantic-release/git"],
     "publish": [
       {
         "path": "@semantic-release/npm",
@@ -18,7 +17,7 @@
         "access": "public"
       },
       {
-        "path": "@semantic-release/git"
+        "path": "@semantic-release/github"
       }
     ]
   },
