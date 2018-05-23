@@ -2,13 +2,12 @@
   "name": "@gdn/cors-express-middleware",
   "version": "0.0.0-semantically-released",
   "description": "",
-  "main": "dist/index",
+  "main": "dist/src/index",
   "private": false,
-  "types": "./dist/index.d.ts",
+  "types": "./dist/src/index.d.ts",
   "scripts": {
     "test": "gulp test",
     "build": "gulp build",
-    "postinstall": "npm run build",
     "semantic-release": "semantic-release"
   },
   "publishConfig": {
