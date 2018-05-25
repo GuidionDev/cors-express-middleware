@@ -10,15 +10,6 @@
     "build": "gulp build",
     "semantic-release": "semantic-release"
   },
-  "release": {
-    "publish": [
-      {
-        "path": "@semantic-release/npm",
-        "pkgRoot": "dist"
-      },
-      "@semantic-release/github"
-    ]
-  },
   "publishConfig": {
     "access": "public"
   },
