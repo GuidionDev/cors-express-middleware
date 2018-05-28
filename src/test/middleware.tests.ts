@@ -1,5 +1,5 @@
 import * as Chai from 'chai';
-import {corsMiddleware} from '../src/middleware';
+import {corsMiddleware} from '../middleware';
 import RequestMock from './mocks/request.mock';
 import ResponseMock from './mocks/response.mock';
 
