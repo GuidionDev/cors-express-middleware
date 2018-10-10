@@ -6,8 +6,10 @@
   "private": false,
   "types": "./dist/index.d.ts",
   "scripts": {
-    "test": "gulp test",
-    "build": "gulp build",
+    "build": "npm run tslint && npx rimraf dist && npx tsc && npm run copy",
+    "tslint": "tslint \"src/**.ts\"",
+    "copy": "copyfiles -u 1 src/test/mock/*.json dist/",
+    "test": "npm run build && nyc --reporter=text --reporter=html mocha ./dist/**/**.tests.js",
     "semantic-release": "semantic-release"
   },
   "publishConfig": {
@@ -17,22 +19,15 @@
   "license": "MIT",
   "dependencies": {},
   "devDependencies": {
-    "@types/mocha": "^5.2.0",
-    "chai": "^4.1.2",
+    "@types/mocha": "^5.2.5",
+    "chai": "^4.2.0",
     "chai-as-promised": "^7.1.1",
-    "gulp": "^3.9.1",
-    "gulp-clean": "^0.4.0",
-    "gulp-istanbul": "^1.1.1",
-    "gulp-mocha": "3.0.1",
-    "gulp-sourcemaps": "^2.6.0",
-    "gulp-tslint": "^8.0.0",
-    "gulp-typescript": "^4.0.2",
+    "copyfiles": "^2.1.0",
     "mocha": "^5.2.0",
-    "remap-istanbul": "^0.11.1",
-    "semantic-release": "^15.5.0",
+    "nyc": "^13.0.1",
+    "semantic-release": "^15.9.17",
     "tslint": "^5.2.0",
-    "typescript": "^2.0.6",
-    "typings": "^2.1.1"
+    "typescript": "^2.0.6"
   },
   "repository": {
     "type": "git",
