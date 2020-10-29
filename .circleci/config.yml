@@ -7,12 +7,12 @@ jobs:
       - checkout
       - run: npm install
       - run: npm run test
-      # - run: npm run semantic-release
+      - run: npm run semantic-release
 
 workflows:
   release:
     jobs:
       - release
-          # filters:
-          #   branches:
-          #     only: master
+          filters:
+            branches:
+              only: master
