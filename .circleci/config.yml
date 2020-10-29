@@ -12,7 +12,7 @@ jobs:
 workflows:
   release:
     jobs:
-      - release
+      - release:
           filters:
             branches:
               only: master
