@@ -13,4 +13,7 @@ workflows:
   version: 2
   release:
     jobs:
-      - release
+      - release:
+        filters:
+          branches:
+            only: master
