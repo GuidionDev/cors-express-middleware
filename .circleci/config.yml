@@ -1,0 +1,16 @@
+version: 2
+jobs:
+  release:
+    docker:
+      - image: cimg/node:8.17.0
+    steps:
+      - checkout
+      - run: npm install
+      - run: npm run test
+      - run: npm run semantic-release
+
+workflows:
+  version: 2
+  release:
+    jobs:
+      - release
