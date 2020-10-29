@@ -10,10 +10,9 @@ jobs:
       - run: npm run semantic-release
 
 workflows:
-  version: 2
   release:
     jobs:
       - release:
-        filters:
-          branches:
-            only: master
+          filters:
+            branches:
+              only: master
