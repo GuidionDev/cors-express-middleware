@@ -12,4 +12,8 @@ jobs:
 workflows:
   release:
     jobs:
-      - release
+      - release:
+          context: semantic-release-npm
+          # filters:
+          #   branches:
+          #     only: master
