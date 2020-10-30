@@ -32,5 +32,9 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/GuidionDev/cors-express-middleware.git"
+  },
+  "release": {
+    "branches": ["master", "GDD-398"],
+    "debug": true
   }
 }
