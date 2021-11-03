@@ -1,9 +1,7 @@
 {
     "compilerOptions": {
         "typeRoots": [
-            "./node_modules/@types",
-            "./typings/gobals",
-            "./typings/modules"
+            "./node_modules/@types"
         ],
         "experimentalDecorators": true,
         "module": "commonjs",
@@ -12,13 +10,13 @@
         "suppressImplicitAnyIndexErrors": true,
         "emitDecoratorMetadata": true,
         "declaration": true,
-        "rootDir": "./src"
+        "rootDir": "./src",
+        "outDir": "./dist"
     },
     "includes": [
         "src/*.ts",
         "src/**/*.ts",
         "test/*.tests.ts",
-        "test/**/*.ts",
-        "typings/index.d.ts"
+        "test/**/*.ts"
     ]
 }

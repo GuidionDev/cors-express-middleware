@@ -4,7 +4,7 @@
 
 ```js
 import { Container } from 'inversify';
-import CorsMiddleware from 'cors-express-middleware';
+import CorsMiddleware from '@gdn/cors-express-middleware';
 ...
 let server = new InversifyExpressServer(kernel);
 server.setConfig((app: any) => {

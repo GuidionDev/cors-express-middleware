@@ -1,0 +1,16 @@
+version: 2.1
+jobs:
+  release:
+    docker:
+      - image: cimg/node:14.18.1
+    steps:
+      - checkout
+      - run: npm install
+      - run: npm run test
+      - run: npm run semantic-release
+
+workflows:
+  release:
+    jobs:
+      - release:
+          context: semantic-release-npm
